@@ -1,0 +1,6 @@
+[
+  { "id": "st-001", "name": "Kerala",      "capital": "Thiruvananthapuram", "x": 42, "y": 82 },
+  { "id": "st-002", "name": "Tamil Nadu",  "capital": "Chennai",            "x": 48, "y": 78 },
+  { "id": "st-003", "name": "Karnataka",   "capital": "Bengaluru",          "x": 42, "y": 70 },
+  { "id": "st-004", "name": "Maharashtra", "capital": "Mumbai",             "x": 36, "y": 58 }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "m6-001",
+    "question": "What is 12 × 8?",
+    "options": ["86", "96", "106", "76"],
+    "correct": 1,
+    "difficulty": "easy",
+    "topic": "multiplication"
+  },
+  {
+    "id": "m6-002",
+    "question": "What is the LCM of 4 and 6?",
+    "options": ["8", "10", "12", "24"],
+    "correct": 2,
+    "difficulty": "medium",
+    "topic": "lcm-hcf"
+  },
+  {
+    "id": "m6-003",
+    "question": "What is 144 ÷ 12?",
+    "options": ["10", "11", "12", "13"],
+    "correct": 2,
+    "difficulty": "easy",
+    "topic": "division"
+  }
+]

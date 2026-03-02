@@ -1,0 +1,18 @@
+[
+  {
+    "id": "sp-001",
+    "word": "ELEPHANT",
+    "image": "/assets/images/animals/elephant.jpg",
+    "blanks": [0, 4],
+    "difficulty": "easy",
+    "hint": "The largest land animal"
+  },
+  {
+    "id": "sp-002",
+    "word": "GIRAFFE",
+    "image": "/assets/images/animals/giraffe.jpg",
+    "blanks": [1, 4, 6],
+    "difficulty": "medium",
+    "hint": "Has the longest neck"
+  }
+]
