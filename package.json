@@ -9,7 +9,8 @@
   "preview": "vite preview",
   "test": "vitest",
   "test:ui": "vitest --ui",
-  "test:run": "vitest run"
+  "test:run": "vitest run",
+  "test:map": "vitest run tests/games/MapMaster"
 },
   "dependencies": {
     "framer-motion": "^12.34.3",
