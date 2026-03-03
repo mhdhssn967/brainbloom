@@ -1,4 +1,6 @@
 // Side panel showing team name, score, and whose turn it is
+import { useEffect, useRef } from "react";
+import Swal from "sweetalert2";
 
 const TEAM_COLORS = { 0: "#EF4444", 1: "#3B82F6" };
 
@@ -9,6 +11,41 @@ export default function TeamPanel({
   side,          // "left" | "right"
 }) {
   const color = TEAM_COLORS[team?.id ?? 0];
+
+  const prevScore = useRef(score);
+
+  useEffect(() => {
+    if (score > prevScore.current) {
+      Swal.fire({
+  html: `
+    <div style="
+      font-family: 'Lilita One', cursive;
+      font-size: 48px;
+      color: ${color};
+      text-shadow: 0 0 30px ${color};
+    ">
+      +${score - prevScore.current}
+    </div>
+    <div style="
+      font-size: 18px;
+      margin-top: 8px;
+      letter-spacing: 2px;
+    ">
+      CORRECT!
+    </div>
+  `,
+  timer: 1000,
+  showConfirmButton: false,
+  background: "transparent",
+  backdrop: "rgba(0,0,0,0.7)",
+  customClass: {
+    popup: "border-none shadow-none"
+  }
+});
+    }
+
+    prevScore.current = score;
+  }, [score]);
 
   return (
     <div className={`

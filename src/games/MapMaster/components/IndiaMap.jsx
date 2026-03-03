@@ -95,7 +95,7 @@ const IndiaMap = forwardRef(function IndiaMap({
       position: "absolute",
       inset: 0,
       zIndex: 0,
-      opacity: 0.6,
+      opacity: 0.2,
       pointerEvents: "none",top:'120px'
     }}
     dangerouslySetInnerHTML={{
@@ -116,7 +116,7 @@ const IndiaMap = forwardRef(function IndiaMap({
       position: "absolute",
       inset: 0,
       zIndex: 1,
-      opacity: 0.04,top:'120px'
+      opacity: 1,top:'120px'
     }}
     dangerouslySetInnerHTML={{
       __html: svgContent.replace(

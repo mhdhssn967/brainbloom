@@ -37,7 +37,7 @@ export default function DraggableState({
 
   const resetPos = useCallback(() => {
     setPos({ x: spawnX, y: spawnY });
-  }, [spawnX, spawnY]);
+  }, [spawnX, spawnY, activeTeam]);
 
   // ── Mouse drag ────────────────────────────────────────────────────────
   const onMouseDown = (e) => {
@@ -103,10 +103,12 @@ export default function DraggableState({
   const vbH      = bbox.height + padding * 2;
 
   // Display size — scale so longest dimension is ~160px
-  const maxDim    = 160;
+  const maxDim    = 110;
   const scale     = maxDim / Math.max(vbW, vbH);
   const dispW     = vbW * scale;
   const dispH     = vbH * scale;
+
+  
 
   return (
     <div

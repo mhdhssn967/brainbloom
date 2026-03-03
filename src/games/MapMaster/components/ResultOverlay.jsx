@@ -102,7 +102,7 @@ export default function ResultOverlay({ scores, teams }) {
             fontSize:    22,
             letterSpacing: 1,
             border:      "none",
-            boxShadow:   "0 6px 20px rgba(249,115,22,0.4)",
+            boxShadow:   "0 6px 20px rgba(249,115,22,0.4)",marginTop:'20px'
           }}
         >
           Back to Home

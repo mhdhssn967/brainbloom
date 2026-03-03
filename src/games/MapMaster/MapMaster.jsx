@@ -171,7 +171,7 @@ export default function MapMaster() {
             position: "relative",
           }}>
             <IndiaMap
-              mapRef={mapRef}
+              ref={mapRef}
               svgContent={svgContent}
               preShownStates={preShownStates}
               placedStates={placedStates}
@@ -208,8 +208,9 @@ export default function MapMaster() {
           phase={phase}
           onDrop={handleDrop}
           spawnX={spawnPos.x}
-          spawnY={spawnPos.y}
+          spawnY={spawnPos.y+280}
           mapRef={mapRef}
+          key={`${currentState.id}-${activeTeam}`} 
         />
       )}
 
