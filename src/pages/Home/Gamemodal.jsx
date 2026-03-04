@@ -57,7 +57,7 @@ export default function GameModal({ game, onClose, onPlay }) {
             all: "unset", cursor: "pointer",
             position: "absolute", top: 16, right: 16, zIndex: 10,
             width: 32, height: 32, borderRadius: "50%",
-            background: "rgba(0,0,0,0.06)",
+            background: "white",
             display: "flex", alignItems: "center", justifyContent: "center",
           }}
         >

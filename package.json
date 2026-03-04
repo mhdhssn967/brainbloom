@@ -10,7 +10,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
-    "test:map": "vitest run tests/games/MapMaster"
+    "test:spotit": "vitest run tests/games/SpotIt"
   },
   "dependencies": {
     "framer-motion": "^12.34.3",
