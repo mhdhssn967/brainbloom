@@ -3,7 +3,7 @@ import { useState } from "react";
 import { GAMES } from "@/data/games";
 import GameCard from "./Gamecard";
 import GameModal from "./Gamemodal";
-import FloatingElements from "./FloatingElements";
+// import FloatingElements from "./FloatingElements";
 import { useNavigate }     from "react-router-dom";
 import { useSessionStore } from "@/store/sessionStore";
 import { useTeamStore }    from "@/store/teamStore";
@@ -41,7 +41,7 @@ export default function Home() {
       `}</style>
 
       {/* Background floating shapes */}
-      <FloatingElements />
+      {/* <FloatingElements /> */}
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <div className="flex flex-col justify-center items-center" style={{
