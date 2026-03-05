@@ -1,6 +1,7 @@
 import { useNavigate }     from "react-router-dom";
 import { useSessionStore } from "@/store/sessionStore";
 import { useTeamStore }    from "@/store/teamStore";
+import { SPELL_IT_DATA } from "@/data/spellItData";
 
 const TEAM_COLORS = { 0: "#EF4444", 1: "#3B82F6" };
 
@@ -101,7 +102,11 @@ export default function ResultOverlay({ collection, teams }) {
                   {col.map((item, i) => (
                     <img
                       key={i}
-                      src={`/assets/spellit/animals/${item.file}`}
+                      src={(() => {
+  const cat    = item.category ?? "animals";
+  const folder = SPELL_IT_DATA[cat]?.folder ?? cat;
+  return `/assets/spellit/${folder}/${item.file}`;
+})()}
                       alt={item.name}
                       title={item.name}
                       style={{

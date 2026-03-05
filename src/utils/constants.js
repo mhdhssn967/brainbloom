@@ -41,6 +41,7 @@ export const SOUND_KEYS = {
   WIN:       'win',
   CLICK:     'click',
   BALLOON_POP: 'balloon-pop',
+  FROG: "frog",
 }
 
 export const DEFAULT_TIMER = 30       // seconds per question

@@ -6,19 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 
 export const GAMES = [
-  {
-    id: "tug-arena",
-    name: "Tug Arena",
-    tagline: "Pull the rope with every correct answer.",
-    description:
-      "Two teams battle through math questions. Every correct answer yanks the rope your way. First team to pull it over the line wins. Streak bonuses add momentum — go on a run and watch the rope fly.",
-    subject: "Math",
-    icon: "/assets/images/games/tugarena.png",
-    mockupEmoji: "🪢",
-    accentColor: "#F97316",
-    modes: ["Single Player", "Team Battle"],
-    route: "/play/tug-arena",
-  },
+ 
   {
     id: "balloon-battle",
     name: "Balloon Battle",
@@ -77,10 +65,22 @@ export const GAMES = [
   tagline:     "See it. Know it. Tap it first.",
   description: "An image appears on screen — four choices, one correct answer. Race your opponent to tap the right picture. Covers monuments, animals, scientists, flags, foods, freedom fighters and space.",
   subject:     "General",
-  icon:        null,
+  icon:        "/assets/images/games/spotit.png",
   mockupEmoji: "🔍",
   accentColor: "#F97316",
   modes:       ["Team Battle"],
   route:       "/play/spot-it",
+},
+{
+  id:          "frog-catch",
+  name:        "FrogCatch!",
+  tagline:     "Answer fast. Catch them all.",
+  description: "50 frogs jump around a pond. Answer maths questions to drop a square and catch a frog. First team to catch the most frogs wins. Difficulty scales from Class 1 to Class 9.",
+  subject:     "Maths",
+  icon:        "/assets/images/games/frogcatch.png",
+  mockupEmoji: "🐸",
+  accentColor: "#22C55E",
+  modes:       ["Team Battle"],
+  route:       "/play/frog-catch",
 },
 ];

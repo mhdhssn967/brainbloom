@@ -114,7 +114,7 @@ export function useSpellIt(categoryKey, totalRounds) {
       // Check if word complete for this team
       if (isWordComplete(blanks, newTeamFilled)) {
         // This team wins the round
-        SoundManager.play(SOUND_KEYS.WIN ?? SOUND_KEYS.STREAK);
+        SoundManager.play(SOUND_KEYS.WIN);
         setRoundWinner(teamId);
         setPhaseSync("won");
 
@@ -167,8 +167,8 @@ export function useSpellIt(categoryKey, totalRounds) {
     teams,
     // Image path helper
     imagePath: currentWord
-      ? getImagePath(categoryKey, currentWord.file)
-      : null,
+  ? getImagePath(categoryKey, currentWord.file, currentWord.category)
+  : null,
     // Actions
     handleKey,
   };

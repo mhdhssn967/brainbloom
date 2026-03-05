@@ -11,7 +11,8 @@ const SpellIt       = lazy(() => import('@/games/SpellIt'))
 const GrammarVision = lazy(() => import('@/games/GrammarVision'))
 const MapMaster     = lazy(() => import('@/games/MapMaster'))
 const MemoryMatrix  = lazy(() => import('@/games/MemoryMatrix'))
-const SpotIt = lazy(() => import('@/games/SpotIt'))
+const SpotIt        = lazy(() => import('@/games/SpotIt'))
+const FrogCatch     = lazy(() => import('@/games/FrogCatch'))
 
 const router = createBrowserRouter([
   { path: '/',                    element: <Home /> },
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
   { path: '/play/map-master',     element: <MapMaster /> },
   { path: '/play/memory-matrix',  element: <MemoryMatrix /> },
   { path: '/play/spot-it',  element: <SpotIt /> },
+  { path: "/play/frog-catch", element: <FrogCatch /> }
 ])
 
 export default function Router() {

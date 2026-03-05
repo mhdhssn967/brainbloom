@@ -14,6 +14,7 @@ const sounds = {
   [SOUND_KEYS.WIN]:       '/assets/audio/win.mp3',
   [SOUND_KEYS.CLICK]:     '/assets/audio/click.mp3',
   [SOUND_KEYS.BALLOON_POP]: '/assets/audio/balloon-pop.mp3',
+  [SOUND_KEYS.FROG]: '/assets/audio/frog.mp3'
 }
 
 const _cache = {}

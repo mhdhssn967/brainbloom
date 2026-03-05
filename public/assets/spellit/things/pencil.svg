@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="102.71" height="101.35" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 102.71 101.35">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#New_Gradient_Swatch_copy_44);
+      }
+
+      .cls-2 {
+        fill: url(#New_Gradient_Swatch_copy_45);
+      }
+
+      .cls-3 {
+        fill: url(#New_Gradient_Swatch_copy_43);
+      }
+
+      .cls-4 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-4, .cls-5 {
+        opacity: .61;
+      }
+
+      .cls-5 {
+        fill: url(#New_Gradient_Swatch_copy_46);
+      }
+
+      .cls-6 {
+        fill: url(#New_Gradient_Swatch_copy_47);
+      }
+
+      .cls-7 {
+        fill: url(#New_Gradient_Swatch_copy_48);
+      }
+
+      .cls-8 {
+        fill: #ff1283;
+      }
+
+      .cls-9 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="New_Gradient_Swatch_copy_44" data-name="New Gradient Swatch copy 44" x1="20.9" y1="46.69" x2="89.42" y2="46.69" gradientTransform="translate(48.11 -25.23) rotate(44.16)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#cc0572"/>
+      <stop offset=".61" stop-color="#b7045a"/>
+      <stop offset="1" stop-color="#b00451"/>
+    </linearGradient>
+    <linearGradient id="New_Gradient_Swatch_copy_45" data-name="New Gradient Swatch copy 45" x1="20.9" y1="41.12" x2="78.61" y2="41.12" gradientTransform="translate(42.71 -23.04) rotate(44.16)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff5ab1"/>
+      <stop offset=".12" stop-color="#ff61b1"/>
+      <stop offset=".6" stop-color="#ff79b1"/>
+      <stop offset=".89" stop-color="#ff83b1"/>
+    </linearGradient>
+    <linearGradient id="New_Gradient_Swatch_copy_47" data-name="New Gradient Swatch copy 47" x1="-386" y1="-111.63" x2="-386" y2="-142.67" gradientTransform="translate(-162.56 435.32) rotate(135.84) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffb59a"/>
+      <stop offset=".27" stop-color="#ffbea2"/>
+      <stop offset=".73" stop-color="#ffd8b7"/>
+      <stop offset="1" stop-color="#ffebc7"/>
+    </linearGradient>
+    <linearGradient id="New_Gradient_Swatch_copy_48" data-name="New Gradient Swatch copy 48" x1="44.16" y1="59.46" x2="10.53" y2="88.09" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffebc7"/>
+      <stop offset=".92" stop-color="#ffd4b9"/>
+      <stop offset="1" stop-color="#ffd2b8"/>
+    </linearGradient>
+    <radialGradient id="New_Gradient_Swatch_copy_43" data-name="New Gradient Swatch copy 43" cx="59.09" cy="421.16" fx="59.09" fy="421.16" r="16.01" gradientTransform="translate(-311.93 157.16) rotate(61.68) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff8ba1"/>
+      <stop offset=".26" stop-color="#fc8397"/>
+      <stop offset=".68" stop-color="#f4707f"/>
+      <stop offset="1" stop-color="#ed5f68"/>
+    </radialGradient>
+    <linearGradient id="linear-gradient" x1="53.04" y1="402.03" x2="83.05" y2="410.98" gradientTransform="translate(-98.22 396.75) rotate(15.84) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9398a3"/>
+      <stop offset=".51" stop-color="#d4d6db"/>
+      <stop offset="1" stop-color="#9398a3"/>
+    </linearGradient>
+    <radialGradient id="radial-gradient" cx="-28.94" cy="-526.76" fx="-28.94" fy="-526.76" r="12.42" gradientTransform="translate(249.72 129.32) rotate(-44.16) scale(2.65 .38)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".05" stop-color="#fff" stop-opacity=".9"/>
+      <stop offset=".15" stop-color="#fff" stop-opacity=".69"/>
+      <stop offset=".26" stop-color="#fff" stop-opacity=".5"/>
+      <stop offset=".37" stop-color="#fff" stop-opacity=".35"/>
+      <stop offset=".48" stop-color="#fff" stop-opacity=".22"/>
+      <stop offset=".6" stop-color="#fff" stop-opacity=".12"/>
+      <stop offset=".72" stop-color="#fff" stop-opacity=".05"/>
+      <stop offset=".85" stop-color="#fff" stop-opacity=".01"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="New_Gradient_Swatch_copy_46" data-name="New Gradient Swatch copy 46" cx="-29.92" cy="-488.68" fx="-29.92" fy="-488.68" r="12.42" gradientTransform="translate(249.72 129.32) rotate(-44.16) scale(2.65 .38)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".05" stop-color="#fff" stop-opacity=".9"/>
+      <stop offset=".15" stop-color="#fff" stop-opacity=".69"/>
+      <stop offset=".26" stop-color="#fff" stop-opacity=".5"/>
+      <stop offset=".37" stop-color="#fff" stop-opacity=".35"/>
+      <stop offset=".48" stop-color="#fff" stop-opacity=".22"/>
+      <stop offset=".6" stop-color="#fff" stop-opacity=".12"/>
+      <stop offset=".72" stop-color="#fff" stop-opacity=".05"/>
+      <stop offset=".85" stop-color="#fff" stop-opacity=".01"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g id="OBJECTS">
+    <g>
+      <g>
+        <g>
+          <rect class="cls-1" x="22.47" y="31.17" width="65.38" height="31.03" transform="translate(-16.94 51.62) rotate(-44.16)"/>
+          <rect class="cls-2" x="17.07" y="33.36" width="65.38" height="15.52" transform="translate(-14.59 46.28) rotate(-44.16)"/>
+          <rect class="cls-8" x="23.02" y="39.59" width="65.38" height="15.34" transform="translate(-17.18 52.17) rotate(-44.16)"/>
+        </g>
+        <path class="cls-8" d="M20.9,58.33L0,101.35l42.52-20.76s3.12-4.26-1.94-7.95c2.73-7.69-1.67-13.37-9.23-12.42-2.69-3.41-5.54-4.7-10.45-1.9Z"/>
+        <path class="cls-6" d="M8.46,83.94l12.44-25.61c4.9-2.8,7.75-1.51,10.45,1.9,7.56-.95,11.96,4.73,9.23,12.42,5.06,3.69,1.94,7.95,1.94,7.95l-24.28,11.85c-2.07-3.99-4.75-7.4-9.78-8.51Z"/>
+        <path class="cls-7" d="M16.46,89.47c7.34-4.83,19.35-12.87,24.12-16.82,2.73-7.69-1.67-13.37-9.23-12.42l-19.19,25.14c1.77,1.04,3.15,2.46,4.3,4.1Z"/>
+        <path class="cls-3" d="M67.8,12.78l9.78-9.58c4.46-4.37,11.62-4.25,15.93.26l6.08,6.36c4.28,4.47,4.12,11.56-.35,15.84l-9.82,9.39-21.62-22.27Z"/>
+        <rect class="cls-9" x="62.48" y="19.08" width="31.47" height="10.38" transform="translate(41.14 -48.75) rotate(45.84)"/>
+      </g>
+      <path class="cls-4" d="M77.81,15.07c1.83,1.88-7.26,13.67-20.3,26.33-13.04,12.66-25.09,21.39-26.92,19.51-1.83-1.88,7.26-13.67,20.3-26.33,13.04-12.66,25.09-21.39,26.92-19.51Z"/>
+      <path class="cls-5" d="M86.11,27.35c1.83,1.88-7.26,13.67-20.3,26.33-13.04,12.66-25.09,21.39-26.92,19.51-1.83-1.88,7.26-13.67,20.3-26.33,13.04-12.66,25.09-21.39,26.92-19.51Z"/>
+    </g>
+  </g>
+</svg>

@@ -1,5 +1,6 @@
 // Shows the collected SVG cards for one team
 // When a new item is collected it animates in from the center
+import { SPELL_IT_DATA } from "@/data/spellItData";
 
 const TEAM_COLORS = { 0: "#EF4444", 1: "#3B82F6" };
 
@@ -13,7 +14,7 @@ export default function Collection({ team, collection, side }) {
       <div className="flex items-center gap-2 mb-2">
         <div style={{
           fontFamily:    "'Baloo 2', cursive",
-          fontSize:      11,
+          fontSize:      41,
           fontWeight:    900,
           color:         color,
           letterSpacing: 2,
@@ -60,8 +61,13 @@ export default function Collection({ team, collection, side }) {
   );
 }
 
+
+
 function CollectedCard({ item, color, index }) {
-  const folder = item.file.split(".")[0];
+  // Use word's own category if present (random mode), else fall back to animals
+  const resolvedCategory = item.category ?? "animals";
+  const folder = SPELL_IT_DATA[resolvedCategory]?.folder ?? resolvedCategory;
+  const src    = `/assets/spellit/${folder}/${item.file}`;
 
   return (
     <div
@@ -83,7 +89,7 @@ function CollectedCard({ item, color, index }) {
       }}
     >
       <img
-        src={`/assets/spellit/animals/${item.file}`}
+        src={src}
         alt={item.name}
         style={{
           width:     "80%",

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="118.76" height="95.69" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 118.76 95.69">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#New_Gradient_Swatch_copy_12);
+      }
+
+      .cls-2 {
+        fill: #0082a0;
+      }
+
+      .cls-3 {
+        fill: url(#New_Gradient_Swatch_copy_14);
+      }
+
+      .cls-4 {
+        fill: url(#radial-gradient);
+        mix-blend-mode: multiply;
+      }
+
+      .cls-5 {
+        fill: #006d93;
+      }
+
+      .cls-6 {
+        isolation: isolate;
+      }
+
+      .cls-7 {
+        fill: url(#New_Gradient_Swatch_copy_13);
+      }
+
+      .cls-8 {
+        fill: url(#New_Gradient_Swatch_copy_15);
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="60.88" cy="91.74" fx="60.88" fy="91.74" r="78.58" gradientTransform="translate(12.66 70.56) scale(.7 .15)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d4d6db"/>
+      <stop offset=".19" stop-color="#d4d6db" stop-opacity=".74"/>
+      <stop offset=".39" stop-color="#d4d6db" stop-opacity=".48"/>
+      <stop offset=".59" stop-color="#d4d6db" stop-opacity=".27"/>
+      <stop offset=".76" stop-color="#d4d6db" stop-opacity=".12"/>
+      <stop offset=".9" stop-color="#d4d6db" stop-opacity=".03"/>
+      <stop offset=".99" stop-color="#d4d6db" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="New_Gradient_Swatch_copy_14" data-name="New Gradient Swatch copy 14" x1="19.1" y1="93.96" x2="71.81" y2="93.96" gradientTransform="translate(-16.23 23.28) rotate(70.19) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset=".43" stop-color="#ed5f68"/>
+      <stop offset="1" stop-color="#ed5f68"/>
+    </linearGradient>
+    <linearGradient id="New_Gradient_Swatch_copy_15" data-name="New Gradient Swatch copy 15" x1="36.27" y1="121.72" x2="36.27" y2="91.67" gradientTransform="translate(-16.23 23.28) rotate(70.19) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ed515a"/>
+      <stop offset="1" stop-color="#c4353e"/>
+    </linearGradient>
+    <linearGradient id="New_Gradient_Swatch_copy_13" data-name="New Gradient Swatch copy 13" x1="37.14" y1="91.67" x2="37.14" y2="66.21" gradientTransform="translate(-16.23 23.28) rotate(70.19) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ed5f68"/>
+      <stop offset=".32" stop-color="#f4707f"/>
+      <stop offset=".74" stop-color="#fc8397"/>
+      <stop offset="1" stop-color="#ff8ba1"/>
+    </linearGradient>
+    <linearGradient id="New_Gradient_Swatch_copy_12" data-name="New Gradient Swatch copy 12" x1="20.82" y1="45.91" x2="75.72" y2="45.91" gradientTransform="translate(-16.23 23.28) rotate(70.19) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#009dc2"/>
+      <stop offset="1" stop-color="#0082a0"/>
+    </linearGradient>
+  </defs>
+  <g class="cls-6">
+    <g id="Layer_2" data-name="Layer 2">
+      <g id="OBJECTS">
+        <g>
+          <ellipse class="cls-4" cx="55.19" cy="83.87" rx="55.19" ry="11.82"/>
+          <g>
+            <polygon class="cls-5" points="118.76 38.89 104.75 0 74.97 23.41 33.52 85.84 60.88 84.55 118.76 38.89"/>
+            <polygon class="cls-2" points="76.86 51.65 33.52 85.84 19.51 46.95 62.84 12.76 76.86 51.65"/>
+            <polygon class="cls-3" points="73.13 12.16 104.75 0 118.76 38.89 90.56 61.14 67.12 59.33 73.13 12.16"/>
+            <polygon class="cls-8" points="74.11 3.61 104.75 0 118.76 38.89 88.12 42.51 74.11 3.61"/>
+            <polygon class="cls-7" points="74.11 3.61 88.12 42.51 67.12 59.33 53.11 20.44 74.11 3.61"/>
+            <polygon class="cls-1" points="19.51 46.95 53.11 20.44 67.12 59.33 33.52 85.84 19.51 46.95"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
