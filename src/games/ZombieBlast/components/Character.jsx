@@ -1,6 +1,7 @@
 import {
   useRef, useEffect, useState,
-  forwardRef, useImperativeHandle, useMemo
+  forwardRef, useImperativeHandle,
+  useMemo, useCallback
 } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { useFrame }               from "@react-three/fiber";
@@ -65,18 +66,40 @@ export const Character = forwardRef(function Character(
     currentAnim.current = name;
   };
 
-  const triggerShoot = () => {
-    if (isDead.current || isShooting.current) return;
-    isShooting.current  = true;
-    currentAnim.current = null;
-    playAnim(CHAR_ANIMS.SHOOT, false, () => {
+  const triggerShoot = useCallback(() => {
+  if (isDead.current || isShooting.current) return;
+  if (!actions[CHAR_ANIMS.SHOOT]) {
+    console.warn("Shoot anim not found:", CHAR_ANIMS.SHOOT, Object.keys(actions));
+    return;
+  }
+
+  isShooting.current  = true;
+  currentAnim.current = null;   // force playAnim to not skip
+
+  const prev = actions[CHAR_ANIMS.IDLE];
+  const next = actions[CHAR_ANIMS.SHOOT];
+
+  if (prev && prev.isRunning()) prev.fadeOut(0.1);
+  next.reset()
+      .fadeIn(0.1)
+      .setLoop(THREE.LoopOnce, 1)
+      .play();
+  next.clampWhenFinished = true;
+  currentAnim.current = CHAR_ANIMS.SHOOT;
+
+  const handler = (e) => {
+    if (e.action === next) {
+      next._mixer.removeEventListener("finished", handler);
       isShooting.current  = false;
       currentAnim.current = null;
       playAnim(CHAR_ANIMS.IDLE, true);
-    });
+    }
   };
+  next._mixer.addEventListener("finished", handler);
+}, [actions]);
 
-  useImperativeHandle(ref, () => ({ shoot: triggerShoot }));
+useImperativeHandle(ref, () => ({ shoot: triggerShoot }), [triggerShoot]);
+
 
   const prevHealth = useRef(health);
   useEffect(() => {
