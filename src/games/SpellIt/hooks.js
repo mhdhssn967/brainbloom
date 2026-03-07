@@ -166,8 +166,8 @@ export function useSpellIt(categoryKey, totalRounds) {
     gameOver,
     teams,
     // Image path helper
-    imagePath: currentWord
-  ? getImagePath(categoryKey, currentWord.file, currentWord.category)
+   imagePath: currentWord
+  ? getImagePath(currentWord.category, currentWord.file)
   : null,
     // Actions
     handleKey,

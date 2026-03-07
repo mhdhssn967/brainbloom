@@ -9,7 +9,6 @@ import { SPELL_IT_DATA, getBlankCount } from "@/data/spellItData";
  */
 export function buildWordList(categoryKey, count) {
   if (categoryKey === "random") {
-    // Pool all words from all categories together
     const allWords = Object.entries(SPELL_IT_DATA).flatMap(([catKey, cat]) =>
       cat.words.map(word => ({ ...word, category: catKey }))
     );
@@ -18,7 +17,11 @@ export function buildWordList(categoryKey, count) {
 
   const category = SPELL_IT_DATA[categoryKey];
   if (!category) return [];
-  return shuffle([...category.words]).slice(0, count);
+
+  // Always stamp category onto every word so collection images resolve correctly
+  return shuffle([...category.words])
+    .slice(0, count)
+    .map(word => ({ ...word, category: categoryKey }));
 }
 
 /**
@@ -103,9 +106,7 @@ export function isWordComplete(blankIndices, filled) {
  * @param {string} categoryKey
  * @param {string} file
  */
-export function getImagePath(categoryKey, file, wordCategory) {
-  // If word has its own category (from random mix) use that
-  const resolvedCategory = wordCategory ?? categoryKey;
-  const folder = SPELL_IT_DATA[resolvedCategory]?.folder ?? resolvedCategory;
+export function getImagePath(categoryKey, file) {
+  const folder = SPELL_IT_DATA[categoryKey]?.folder ?? categoryKey;
   return `/assets/spellit/${folder}/${file}`;
 }

@@ -20,7 +20,7 @@ export function useFrogCatch(ageGroup, frogCount) {
 
   // Spawn frogs across a wide area — zoom=40 on ~1920px canvas ≈ 24 half-width world units.
   // Runtime movement is clamped to actual viewport via the bounds prop in Frog.jsx.
-  const [frogs,      setFrogs]      = useState(() => initFrogs(frogCount, 20));
+  const [frogs,      setFrogs]      = useState(() => initFrogs(frogCount, 30));
   const frogsRef                    = useRef(frogs);
 
   const [questions,  setQuestions]  = useState({

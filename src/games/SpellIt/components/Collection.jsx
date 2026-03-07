@@ -5,6 +5,7 @@ import { SPELL_IT_DATA } from "@/data/spellItData";
 const TEAM_COLORS = { 0: "#EF4444", 1: "#3B82F6" };
 
 export default function Collection({ team, collection, side }) {
+
   const color = TEAM_COLORS[team?.id ?? 0];
 
   return (
@@ -64,38 +65,32 @@ export default function Collection({ team, collection, side }) {
 
 
 function CollectedCard({ item, color, index }) {
-  // Use word's own category if present (random mode), else fall back to animals
-  const resolvedCategory = item.category ?? "animals";
-  const folder = SPELL_IT_DATA[resolvedCategory]?.folder ?? resolvedCategory;
+  const folder = SPELL_IT_DATA[item.category]?.folder ?? item.category;
   const src    = `/assets/spellit/${folder}/${item.file}`;
 
   return (
     <div
       title={item.name}
       style={{
-        width:        48,
-        height:       48,
-        borderRadius: 12,
-        background:   `${color}15`,
-        border:       `2px solid ${color}40`,
-        display:      "flex",
-        alignItems:   "center",
+        width:          48,
+        height:         48,
+        borderRadius:   12,
+        background:     `${color}15`,
+        border:         `2px solid ${color}40`,
+        display:        "flex",
+        alignItems:     "center",
         justifyContent: "center",
-        overflow:     "hidden",
-        animation:    `cardPop 0.4s cubic-bezier(0.34,1.56,0.64,1) both`,
+        overflow:       "hidden",
+        animation:      "cardPop 0.4s cubic-bezier(0.34,1.56,0.64,1) both",
         animationDelay: `${index * 0.05}s`,
-        boxShadow:    `0 4px 12px ${color}20`,
-        flexShrink:   0,
+        boxShadow:      `0 4px 12px ${color}20`,
+        flexShrink:     0,
       }}
     >
       <img
         src={src}
         alt={item.name}
-        style={{
-          width:     "80%",
-          height:    "80%",
-          objectFit: "contain",
-        }}
+        style={{ width:"80%", height:"80%", objectFit:"contain" }}
       />
     </div>
   );

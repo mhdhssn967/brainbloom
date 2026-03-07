@@ -102,9 +102,8 @@ export default function ResultOverlay({ collection, teams }) {
                   {col.map((item, i) => (
                     <img
                       key={i}
-                      src={(() => {
-  const cat    = item.category ?? "animals";
-  const folder = SPELL_IT_DATA[cat]?.folder ?? cat;
+                     src={(() => {
+  const folder = SPELL_IT_DATA[item.category]?.folder ?? item.category;
   return `/assets/spellit/${folder}/${item.file}`;
 })()}
                       alt={item.name}

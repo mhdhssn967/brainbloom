@@ -41,7 +41,7 @@ export function Frog({ frog, posRef, bounds }) {
   const jumpOrigin = useRef({ x: frog.x, z: frog.z });
   const target     = useRef({ x: frog.x, z: frog.z });
   const state      = useRef("idle");
-  const timer      = useRef(randBetween(0.3, 2.5));   // stagger initial jump
+  const timer      = useRef(randBetween(0.02, 0.1));   // stagger initial jump
   const progress   = useRef(0);
   const jumpDur    = useRef(0.65);
   const moveStartF = useRef(0.35);
