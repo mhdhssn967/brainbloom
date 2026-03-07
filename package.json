@@ -11,7 +11,8 @@
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "test:spellit": "vitest run tests/games/SpellIt",
-    "test:frog": "vitest run tests/games/FrogCatch"
+    "test:frog": "vitest run tests/games/FrogCatch",
+    "test:zombie": "vitest run tests/games/ZombieBlast"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",

@@ -42,6 +42,12 @@ export const SOUND_KEYS = {
   CLICK:     'click',
   BALLOON_POP: 'balloon-pop',
   FROG: "frog",
+  SHOOT:        "shoot",
+  HEADSHOT:     "headshot",
+  ZOMBIE_DEATH: "zombie_death",
+  ZOMBIE_ATTACK:"zombie_attack",
+  ZOMBIE_GROWL: "zombie_growl",
+  GAME_OVER:    "game_over",
 }
 
 export const DEFAULT_TIMER = 30       // seconds per question
