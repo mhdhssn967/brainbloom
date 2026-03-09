@@ -2,10 +2,6 @@
 import { useState, useEffect } from "react";
 import { X, Users, User, Play } from "lucide-react";
 
-const MODES = [
-  { id: "single", label: "Solo Play",    icon: User,  sub: "One player vs the clock" },
-  { id: "multi",  label: "Team Battle",  icon: Users, sub: "Two squads, one winner"   },
-];
 
 export default function GameModal({ game, onClose, onPlay }) {
   const [selectedMode, setSelectedMode] = useState(null);
@@ -117,56 +113,13 @@ export default function GameModal({ game, onClose, onPlay }) {
             {game.description}
           </div>
 
-          {/* Mode selector */}
-          <div style={{ fontSize: 11, fontWeight: 900, color: "#bbb", letterSpacing: 1, marginBottom: 8 }}>
-            CHOOSE MODE
-          </div>
+          
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 20 }}>
-            {MODES.map(mode => {
-              const active = selectedMode === mode.id;
-              return (
-                <button
-                  key={mode.id}
-                  onClick={() => setSelectedMode(mode.id)}
-                  style={{
-                    all: "unset", cursor: "pointer",
-                    padding: "12px 14px", borderRadius: 16,
-                    border: active
-                      ? `2px solid ${game.accentColor}`
-                      : "2px solid #EBEBEB",
-                    background: active ? `${game.accentColor}0c` : "#FAFAFA",
-                    display: "flex", alignItems: "center", gap: 10,
-                    transition: "all 0.15s ease",
-                  }}
-                >
-                  <div style={{
-                    width: 36, height: 36, borderRadius: 10,
-                    background: active ? `${game.accentColor}18` : "#F0F0F0",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    transition: "background 0.15s ease",
-                  }}>
-                    <mode.icon size={17} color={active ? game.accentColor : "#999"} />
-                  </div>
-                  <div>
-                    <div style={{
-                      fontSize: 13, fontWeight: 800,
-                      color: active ? game.accentColor : "#333",
-                      lineHeight: 1.1,
-                    }}>{mode.label}</div>
-                    <div style={{ fontSize: 10, color: "#aaa", fontWeight: 600, marginTop: 1 }}>
-                      {mode.sub}
-                    </div>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
+          
 
           {/* Play button */}
           <button
-            disabled={!selectedMode}
-            onClick={() => selectedMode && onPlay(game, selectedMode)}
+            onClick={() => onPlay(game, selectedMode)}
             style={{
               all: "unset",
               width: "100%",
@@ -174,8 +127,7 @@ export default function GameModal({ game, onClose, onPlay }) {
               gap: 10,
               padding: "14px 0",
               borderRadius: 16,
-              background: selectedMode ? game.accentColor : "#F0F0F0",
-              cursor: selectedMode ? "pointer" : "not-allowed",
+              background:game.accentColor ,
               transition: "all 0.2s ease",
               boxShadow: selectedMode ? `0 8px 24px ${game.accentColor}40` : "none",
               transform: selectedMode ? "scale(1)" : "scale(0.98)",
@@ -183,15 +135,15 @@ export default function GameModal({ game, onClose, onPlay }) {
           >
             <Play
               size={20}
-              color={selectedMode ? "#fff" : "#ccc"}
-              fill={selectedMode ? "#fff" : "#ccc"}
+              color="#fff"
+              fill="#fff"
             />
             <span style={{
               fontFamily: "'Lilita One', cursive",
               fontSize: 20, letterSpacing: 1,
-              color: selectedMode ? "#fff" : "#ccc",
+              color: "#fff",
             }}>
-              {selectedMode ? "Let's Play!" : "Choose a Mode"}
+             Start Game
             </span>
           </button>
         </div>

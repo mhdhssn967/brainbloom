@@ -67,37 +67,45 @@ export const Character = forwardRef(function Character(
   };
 
   const triggerShoot = useCallback(() => {
+  console.log("triggerShoot called");
+  console.log("isDead:", isDead.current);
+  console.log("isShooting:", isShooting.current);
+  console.log("actions keys:", Object.keys(actions));
+  console.log("CHAR_ANIMS.SHOOT value:", CHAR_ANIMS.SHOOT);
+  console.log("shoot action exists:", !!actions[CHAR_ANIMS.SHOOT]);
+
   if (isDead.current || isShooting.current) return;
   if (!actions[CHAR_ANIMS.SHOOT]) {
-    console.warn("Shoot anim not found:", CHAR_ANIMS.SHOOT, Object.keys(actions));
+    console.warn("Shoot anim missing:", CHAR_ANIMS.SHOOT);
     return;
   }
 
   isShooting.current  = true;
-  currentAnim.current = null;   // force playAnim to not skip
+  currentAnim.current = null;
 
   const prev = actions[CHAR_ANIMS.IDLE];
   const next = actions[CHAR_ANIMS.SHOOT];
 
-  if (prev && prev.isRunning()) prev.fadeOut(0.1);
+  console.log("prev action:", prev);
+  console.log("next action:", next);
+
+  if (prev && prev.isRunning()) prev.fadeOut(0.08);
   next.reset()
-      .fadeIn(0.1)
+      .fadeIn(0.08)
       .setLoop(THREE.LoopOnce, 1)
       .play();
   next.clampWhenFinished = true;
-  currentAnim.current = CHAR_ANIMS.SHOOT;
+  currentAnim.current   = CHAR_ANIMS.SHOOT;
 
   const handler = (e) => {
-    if (e.action === next) {
-      next._mixer.removeEventListener("finished", handler);
-      isShooting.current  = false;
-      currentAnim.current = null;
-      playAnim(CHAR_ANIMS.IDLE, true);
-    }
+    if (e.action !== next) return;
+    next._mixer.removeEventListener("finished", handler);
+    isShooting.current  = false;
+    currentAnim.current = null;
+    playAnim(CHAR_ANIMS.IDLE, true);
   };
   next._mixer.addEventListener("finished", handler);
-}, [actions]);
-
+}, [actions, playAnim]);
 useImperativeHandle(ref, () => ({ shoot: triggerShoot }), [triggerShoot]);
 
 

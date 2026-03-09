@@ -3,8 +3,10 @@ import { useNavigate }     from "react-router-dom";
 import { useSessionStore } from "@/store/sessionStore";
 import { useTeamStore }    from "@/store/teamStore";
 import ZombieBlast         from "./ZombieBlast";
+import { useGLTF } from "@react-three/drei";
 
 export default function ZombieBlastPage() {
+  
   const navigate = useNavigate();
   const gameId   = useSessionStore(s => s.gameId);
   const teams    = useTeamStore(s => s.teams);

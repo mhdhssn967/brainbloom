@@ -30,13 +30,15 @@ const GameCanvas = memo(function GameCanvas({
   ) ?? null;
 
   // Fire shoot animation when a new bullet appears
-  useEffect(() => {
-    const count = bullets.length;
-    if (count > prevBulletCount.current && characterRef.current) {
-      characterRef.current.shoot();
-    }
-    prevBulletCount.current = count;
-  }, [bullets]);
+useEffect(() => {
+  const count = bullets.length;
+  console.log("bullets changed:", count, "prev:", prevBulletCount.current, "ref:", characterRef.current);
+  if (count > prevBulletCount.current && characterRef.current) {
+    console.log("calling shoot on ref");
+    characterRef.current.shoot();
+  }
+  prevBulletCount.current = count;
+}, [bullets]);
 
   return (
     <Canvas

@@ -24,7 +24,7 @@ export const WAVES = [
   { minTime: 0,  animation: "CharacterArmature|Crawl",    speed: 0.006, spawnInterval: 4500, label: "Crawling" },
   { minTime: 30, animation: "CharacterArmature|Walk",     speed: 0.013, spawnInterval: 3500, label: "Walking"  },
   { minTime: 60, animation: "CharacterArmature|Run_Arms", speed: 0.022, spawnInterval: 2800, label: "Jogging"  },
-  { minTime: 90, animation: "CharacterArmature|Run",      speed: 0.032, spawnInterval: 2000, label: "Running"  },
+  { minTime: 90, animation: "CharacterArmature|Run",      speed: 0.032, spawnInterval: 1000, label: "Running"  },
 ]
 export const MAX_ZOMBIES_SCREEN = 14
 
@@ -108,7 +108,7 @@ export const CHARACTERS = {
 // ── Character animations ─────────────────────────────────────────────────
 export const CHAR_ANIMS = {
   IDLE:   "CharacterArmature|Idle",
-  SHOOT:  "CharacterArmature|Idle_Attack",
+  SHOOT:  "CharacterArmature|Idle_Shoot",
   HIT:    "CharacterArmature|HitReact",
   DEATH:  "CharacterArmature|Death",
 }
