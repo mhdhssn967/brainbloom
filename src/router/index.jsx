@@ -13,7 +13,7 @@ const MemoryMatrix  = lazy(() => import('@/games/MemoryMatrix'))
 const SpotIt        = lazy(() => import('@/games/SpotIt'))
 const FrogCatch     = lazy(() => import('@/games/FrogCatch'))
 const ZombieBlast   = lazy(() => import('@/games/ZombieBlast'))
-const GrammarBridge = lazy(() => import('@/games/GrammarBridge/index.jsx'))
+const GrammarBridge = lazy(() => import('@/games/GrammarBridge'))
 
 const router = createBrowserRouter([
   { path: '/',                    element: <Home /> },
