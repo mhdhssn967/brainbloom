@@ -8,12 +8,13 @@ const Dashboard     = lazy(() => import('@/pages/Dashboard'))
 const TugArena      = lazy(() => import('@/games/TugArena'))
 const BalloonBattle = lazy(() => import('@/games/BalloonBattle'))
 const SpellIt       = lazy(() => import('@/games/SpellIt'))
-const GrammarVision = lazy(() => import('@/games/GrammarVision'))
+const GrammarVision = lazy(() => import('@/games/GrammarBridge/Index'))
 const MapMaster     = lazy(() => import('@/games/MapMaster'))
 const MemoryMatrix  = lazy(() => import('@/games/MemoryMatrix'))
 const SpotIt        = lazy(() => import('@/games/SpotIt'))
 const FrogCatch     = lazy(() => import('@/games/FrogCatch'))
 const ZombieBlast   = lazy(() => import('@/games/ZombieBlast'))
+const GrammarBridge = lazy(() => import('@/games/GrammarBridge'))
 
 const router = createBrowserRouter([
   { path: '/',                    element: <Home /> },
@@ -27,7 +28,8 @@ const router = createBrowserRouter([
   { path: '/play/memory-matrix',  element: <MemoryMatrix /> },
   { path: '/play/spot-it',  element: <SpotIt /> },
   { path: "/play/frog-catch", element: <FrogCatch /> },
-  { path: "/play/zombie-blast", element: <ZombieBlast /> }
+  { path: "/play/zombie-blast", element: <ZombieBlast /> },
+  { path: "/play/grammar-bridge", element: <GrammarBridge /> }
 ])
 
 export default function Router() {
