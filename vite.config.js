@@ -12,7 +12,8 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,mp3,webp}']
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,mp3,webp}'],
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5 MiB
       },
       manifest: {
         name: 'BrainBloom',

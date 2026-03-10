@@ -8,13 +8,12 @@ const Dashboard     = lazy(() => import('@/pages/Dashboard'))
 const TugArena      = lazy(() => import('@/games/TugArena'))
 const BalloonBattle = lazy(() => import('@/games/BalloonBattle'))
 const SpellIt       = lazy(() => import('@/games/SpellIt'))
-const GrammarVision = lazy(() => import('@/games/GrammarBridge/Index'))
 const MapMaster     = lazy(() => import('@/games/MapMaster'))
 const MemoryMatrix  = lazy(() => import('@/games/MemoryMatrix'))
 const SpotIt        = lazy(() => import('@/games/SpotIt'))
 const FrogCatch     = lazy(() => import('@/games/FrogCatch'))
 const ZombieBlast   = lazy(() => import('@/games/ZombieBlast'))
-const GrammarBridge = lazy(() => import('@/games/GrammarBridge'))
+const GrammarBridge = lazy(() => import('@/games/GrammarBridge/index.jsx'))
 
 const router = createBrowserRouter([
   { path: '/',                    element: <Home /> },
@@ -23,13 +22,12 @@ const router = createBrowserRouter([
   { path: '/play/tug-arena',      element: <TugArena /> },
   { path: '/play/balloon-battle', element: <BalloonBattle /> },
   { path: '/play/spell-it',       element: <SpellIt /> },
-  { path: '/play/grammar-vision', element: <GrammarVision /> },
   { path: '/play/map-master',     element: <MapMaster /> },
   { path: '/play/memory-matrix',  element: <MemoryMatrix /> },
-  { path: '/play/spot-it',  element: <SpotIt /> },
-  { path: "/play/frog-catch", element: <FrogCatch /> },
-  { path: "/play/zombie-blast", element: <ZombieBlast /> },
-  { path: "/play/grammar-bridge", element: <GrammarBridge /> }
+  { path: '/play/spot-it',        element: <SpotIt /> },
+  { path: '/play/frog-catch',     element: <FrogCatch /> },
+  { path: '/play/zombie-blast',   element: <ZombieBlast /> },
+  { path: '/play/grammar-bridge', element: <GrammarBridge /> },
 ])
 
 export default function Router() {
