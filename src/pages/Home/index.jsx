@@ -45,7 +45,6 @@ export default function Home() {
     <div style={{
       width: "100vw", minHeight: "100vh",
       background: "#060B18",
-      fontFamily: "'Nunito', sans-serif",
       overflowX: "hidden",
       overflowY: "auto",
       display: "flex", flexDirection: "column",
