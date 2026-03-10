@@ -23,8 +23,9 @@ export const WRONG_LOCK_MS     = 1000
 export const WAVES = [
   { minTime: 0,  animation: "CharacterArmature|Crawl",    speed: 0.006, spawnInterval: 4500, label: "Crawling" },
   { minTime: 30, animation: "CharacterArmature|Walk",     speed: 0.013, spawnInterval: 3500, label: "Walking"  },
-  { minTime: 60, animation: "CharacterArmature|Run_Arms", speed: 0.022, spawnInterval: 2800, label: "Jogging"  },
-  { minTime: 90, animation: "CharacterArmature|Run",      speed: 0.032, spawnInterval: 1000, label: "Running"  },
+  { minTime: 60, animation: "CharacterArmature|Run_Arms", speed: 0.022, spawnInterval: 3800, label: "Jogging"  },
+  { minTime: 90, animation: "CharacterArmature|Run",      speed: 0.042, spawnInterval: 6500, label: "Running"  },
+  
 ]
 export const MAX_ZOMBIES_SCREEN = 14
 

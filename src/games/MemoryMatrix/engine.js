@@ -1,68 +1,50 @@
-import { shuffle }          from "@/utils/math";
-import {
-  GRID_SIZE,
-  TOTAL_ROUNDS,
-  POINTS_PER_TILE,
-  WRONG_TAP_PENALTY,
-} from "./constants";
+import { shuffle } from "@/utils/math";
+import { LEVEL_STAGES } from "./constants";
 
 /**
- * Pick random tile indices to light up this round.
- * @param {number} tileCount  how many tiles to flip
- * @returns {number[]}  e.g. [3, 11, 19]
+ * Get grid config for a given level number.
  */
-export function generatePattern(tileCount = 3) {
-  const allIndices = Array.from({ length: GRID_SIZE }, (_, i) => i);
-  return shuffle(allIndices).slice(0, tileCount);
+export function getStageForLevel(level) {
+  let stage = LEVEL_STAGES[0];
+  for (const s of LEVEL_STAGES) {
+    if (level >= s.minLevel) stage = s;
+  }
+  return stage;
 }
 
 /**
- * Compare what was shown vs what the student tapped.
- * @param {number[]} pattern  tiles that were lit
- * @param {number[]} taps     tiles the student tapped
- * @returns {{ correct: number[], missed: number[], wrong: number[] }}
+ * Generate a random pattern of tile indices.
  */
-export function evaluateTaps(pattern, taps) {
-  const patternSet = new Set(pattern);
-  const tapsSet    = new Set(taps);
-
-  const correct = pattern.filter(i => tapsSet.has(i));
-  const missed  = pattern.filter(i => !tapsSet.has(i));
-  const wrong   = taps.filter(i => !patternSet.has(i));
-
-  return { correct, missed, wrong };
+export function generatePattern(gridSize, litCount) {
+  const total = gridSize * gridSize;
+  const all   = Array.from({ length: total }, (_, i) => i);
+  return shuffle(all).slice(0, litCount);
 }
 
 /**
- * Calculate points earned for one round.
- * Correct taps earn points, wrong taps deduct.
- * Score never goes below 0.
- * @param {{ correct: number[], wrong: number[] }} evaluation
- * @returns {number}
+ * Check if a tapped tile is correct.
  */
-export function calculateScore(evaluation) {
-  const earned   = evaluation.correct.length * POINTS_PER_TILE;
-  const deducted = evaluation.wrong.length   * WRONG_TAP_PENALTY;
-  return Math.max(0, earned - deducted);
+export function isTileCorrect(pattern, tileIndex) {
+  return pattern.includes(tileIndex);
 }
 
 /**
- * How many tiles to flip this round.
- * Gets harder as rounds progress.
- * @param {number} round  1-based round number
- * @returns {number}
+ * Check if all correct tiles have been tapped (level complete).
  */
-export function getTileCount(round) {
-  if (round <= 5)  return 3;
-  if (round <= 12) return 4;
-  return 5;
+export function isLevelComplete(pattern, tappedCorrect) {
+  return pattern.every(i => tappedCorrect.includes(i));
 }
 
 /**
- * Returns true when all rounds are done.
- * @param {number} round  current round (1-based)
- * @returns {boolean}
+ * Determine winner by level reached.
+ * Tiebreak: more correct taps in current level.
  */
-export function isGameOver(round) {
-  return round > TOTAL_ROUNDS;
+export function getWinner(p0State, p1State) {
+  if (p0State.level > p1State.level) return 0;
+  if (p1State.level > p0State.level) return 1;
+  const p0correct = p0State.correctTaps.length;
+  const p1correct = p1State.correctTaps.length;
+  if (p0correct > p1correct) return 0;
+  if (p1correct > p0correct) return 1;
+  return null; // draw
 }

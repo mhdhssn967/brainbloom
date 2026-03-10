@@ -1,164 +1,176 @@
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useRef, useCallback, useEffect, useMemo } from "react";
 import { useSessionStore }  from "@/store/sessionStore";
 import { useTeamStore }     from "@/store/teamStore";
-import { useTimer }         from "@/hooks/useTimer";
 import SoundManager         from "@/engine/SoundManager";
+import { SOUND_KEYS }       from "@/utils/constants";
 import {
+  getStageForLevel,
   generatePattern,
-  evaluateTaps,
-  calculateScore,
-  getTileCount,
-  isGameOver,
+  isTileCorrect,
+  isLevelComplete,
+  getWinner,
 } from "./engine";
 import {
-  TOTAL_ROUNDS,
   SHOW_DURATION,
-  RECALL_DURATION,
+  RESULT_FLASH_MS,
+  WRONG_FLASH_MS,
 } from "./constants";
-import { SOUND_KEYS } from "@/utils/constants";
 
-export function useMemoryGame() {
-  const { endSession }      = useSessionStore();
-  const { teams, addScore } = useTeamStore();
+function buildPlayerState(level = 1) {
+  const stage   = getStageForLevel(level);
+  const pattern = generatePattern(stage.gridSize, stage.lit);
+  return {
+    level,
+    stage,
+    pattern,
+    correctTaps:  [],   // indices tapped correctly so far
+    wrongTile:    null, // index of last wrong tap (for red flash)
+    phase:        "show",  // show | recall | advancing | wrong_flash
+  };
+}
 
-  // ── Game state ───────────────────────────────────────────────────────
-  const [round, setRound]           = useState(1);
-  const [phase, setPhase]           = useState("idle");
-  const [pattern, setPattern]       = useState([]);
-  const [leftTaps, setLeftTaps]     = useState([]);
-  const [rightTaps, setRightTaps]   = useState([]);
-  const [evaluation, setEvaluation] = useState(null);
-  const [gameOver, setGameOver]     = useState(false);
+export function useMemoryGame({ totalSeconds }) {
+  const { endSession }  = useSessionStore();
+  const { teams }       = useTeamStore();
 
-  // Refs — always current values, safe inside timeouts
-  const roundRef       = useRef(1);
-  const leftTapsRef    = useRef([]);
-  const rightTapsRef   = useRef([]);
-  const phaseRef       = useRef("idle");
-  const patternRef     = useRef([]);
+  // ── Per-player state ──────────────────────────────────────────────────
+  const init = useMemo(() => ({
+    0: buildPlayerState(1),
+    1: buildPlayerState(1),
+  }), []);
 
-  // Keep refs in sync with state
-  const setPhaseSync = (p) => { phaseRef.current = p; setPhase(p); };
-  const setRoundSync = (r) => { roundRef.current = r; setRound(r); };
+  const [players,  setPlayers]  = useState(init);
+  const playersRef              = useRef(init);
 
-  // ── Start a round by number ──────────────────────────────────────────
-  // Takes round number as argument — never reads from state/ref
-  const startRound = useCallback((roundNum) => {
-    if (isGameOver(roundNum)) {
-      setGameOver(true);
-      setPhaseSync("done");
-      endSession();
-      return;
-    }
+  // ── Game timer ────────────────────────────────────────────────────────
+  const [timeLeft,  setTimeLeft]  = useState(totalSeconds);
+  const [gameOver,  setGameOver]  = useState(false);
+  const [winner,    setWinner]    = useState(null);
+  const [started,   setStarted]   = useState(false);
+  const timeLeftRef               = useRef(totalSeconds);
+  const gameOverRef               = useRef(false);
+  const timerRef                  = useRef(null);
 
-    const tileCount  = getTileCount(roundNum);
-    const newPattern = generatePattern(tileCount);
-
-    // Reset taps
-    leftTapsRef.current  = [];
-    rightTapsRef.current = [];
-    setLeftTaps([]);
-    setRightTaps([]);
-    setEvaluation(null);
-
-    // Update round and pattern
-    setRoundSync(roundNum);
-    patternRef.current = newPattern;
-    setPattern(newPattern);
-    setPhaseSync("show");
-
+  // ── End game ──────────────────────────────────────────────────────────
+  const endGame = useCallback(() => {
+    if (gameOverRef.current) return;
+    gameOverRef.current = true;
+    clearInterval(timerRef.current);
+    const w = getWinner(
+      playersRef.current[0],
+      playersRef.current[1]
+    );
+    setWinner(w);
+    setGameOver(true);
+    endSession();
+    SoundManager.play(SOUND_KEYS.WIN);
   }, [endSession]);
 
-  // ── Timer — recall countdown ─────────────────────────────────────────
-  const { remaining, start: startTimer, reset: resetTimer } = useTimer(
-    RECALL_DURATION,
-    () => {
-      // Timer expired — evaluate and move on
-      endRecallPhase();
-    }
-  );
+  // ── Start countdown ───────────────────────────────────────────────────
+  const startCountdown = useCallback(() => {
+    setStarted(true);
+    timerRef.current = setInterval(() => {
+      timeLeftRef.current -= 1;
+      setTimeLeft(timeLeftRef.current);
+      if (timeLeftRef.current <= 0) endGame();
+    }, 1000);
+  }, [endGame]);
 
-  // ── End recall, score both teams, show result ────────────────────────
-  const endRecallPhase = useCallback(() => {
-    // Guard — only run during recall phase
-    if (phaseRef.current !== "recall") return;
+  // ── Update one player ─────────────────────────────────────────────────
+  const updatePlayer = useCallback((playerId, patch) => {
+    setPlayers(prev => {
+      const updated = {
+        ...prev,
+        [playerId]: { ...prev[playerId], ...patch },
+      };
+      playersRef.current = updated;
+      return updated;
+    });
+  }, []);
 
-    const currentPattern = patternRef.current;
-    const leftEval  = evaluateTaps(currentPattern, leftTapsRef.current);
-    const rightEval = evaluateTaps(currentPattern, rightTapsRef.current);
+  // ── Begin show phase for a player ────────────────────────────────────
+  const beginShow = useCallback((playerId, level) => {
+    const stage   = getStageForLevel(level);
+    const pattern = generatePattern(stage.gridSize, stage.lit);
+    updatePlayer(playerId, {
+      level,
+      stage,
+      pattern,
+      correctTaps: [],
+      wrongTile:   null,
+      phase:       "show",
+    });
 
-    const leftScore  = calculateScore(leftEval);
-    const rightScore = calculateScore(rightEval);
-
-    if (leftScore  > 0) addScore(0, leftScore);
-    if (rightScore > 0) addScore(1, rightScore);
-
-    setEvaluation({ left: leftEval, right: rightEval });
-    setPhaseSync("result");
-
-    // After showing result, start the next round
+    // After show duration switch to recall
     setTimeout(() => {
-      const nextRoundNum = roundRef.current + 1;
-      startRound(nextRoundNum);
-    }, 1500);
-
-  }, [addScore, startRound]);
-
-  // ── Show phase — display tiles, then switch to recall ────────────────
-  useEffect(() => {
-    if (phase !== "show") return;
-
-    const t = setTimeout(() => {
-      setPhaseSync("recall");
-      resetTimer(RECALL_DURATION);
-      startTimer();
+      if (gameOverRef.current) return;
+      updatePlayer(playerId, { phase: "recall" });
     }, SHOW_DURATION);
+  }, [updatePlayer]);
 
-    return () => clearTimeout(t);
-  }, [phase, resetTimer, startTimer]);
+  // ── Start both players on mount ───────────────────────────────────────
+  useEffect(() => {
+    beginShow(0, 1);
+    beginShow(1, 1);
+  }, []);
 
-  // ── Start game — called from component on mount ──────────────────────
-  const startGame = useCallback(() => {
-    startRound(1);
-  }, [startRound]);
+  // ── Handle tile tap ───────────────────────────────────────────────────
+  const handleTap = useCallback((playerId, tileIndex) => {
+    if (gameOverRef.current) return;
+    const p = playersRef.current[playerId];
+    if (p.phase !== "recall") return;
+    if (p.correctTaps.includes(tileIndex)) return; // already tapped
 
-  // ── Handle tile tap ──────────────────────────────────────────────────
-  const handleTap = useCallback((teamId, tileIndex) => {
-  if (phaseRef.current !== "recall") return;
+    const correct = isTileCorrect(p.pattern, tileIndex);
 
-  const ref = teamId === 0 ? leftTapsRef : rightTapsRef;
-  const set = teamId === 0 ? setLeftTaps : setRightTaps;
+    if (correct) {
+      SoundManager.play(SOUND_KEYS.CORRECT);
+      const newCorrect = [...p.correctTaps, tileIndex];
+      const complete   = isLevelComplete(p.pattern, newCorrect);
 
-  const already = ref.current.includes(tileIndex);
+      if (complete) {
+        // Level complete — flash advancing then go to next level
+        updatePlayer(playerId, {
+          correctTaps: newCorrect,
+          phase:       "advancing",
+        });
+        SoundManager.play(SOUND_KEYS.WIN);
+        setTimeout(() => {
+          if (gameOverRef.current) return;
+          beginShow(playerId, p.level + 1);
+        }, RESULT_FLASH_MS);
+      } else {
+        updatePlayer(playerId, { correctTaps: newCorrect });
+      }
 
-  let updated;
-  if (already) {
-    // Retap — deselect the tile, no sound
-    updated = ref.current.filter(i => i !== tileIndex);
-  } else {
-    // New tap — select and play sound
-    updated = [...ref.current, tileIndex];
-    const isCorrect = patternRef.current.includes(tileIndex);
-    SoundManager.play(isCorrect ? SOUND_KEYS.CORRECT : SOUND_KEYS.WRONG);
-  }
+    } else {
+      // Wrong tap — flash red then reset pattern at same level
+      SoundManager.play(SOUND_KEYS.WRONG);
+      updatePlayer(playerId, {
+        wrongTile: tileIndex,
+        phase:     "wrong_flash",
+      });
+      setTimeout(() => {
+        if (gameOverRef.current) return;
+        beginShow(playerId, p.level); // same level, new pattern
+      }, WRONG_FLASH_MS);
+    }
+  }, [updatePlayer, beginShow]);
 
-  ref.current = updated;
-  set(updated);
-
-}, []);
+  useEffect(() => {
+    return () => {
+      clearInterval(timerRef.current);
+    };
+  }, []);
 
   return {
-    round,
-    phase,
-    pattern,
-    leftTaps,
-    rightTaps,
-    evaluation,
-    remaining,
+    players,
+    timeLeft,
     gameOver,
+    winner,
+    started,
     teams,
-    tappingLocked: phase !== "recall",
-    startGame,
     handleTap,
+    startCountdown,
   };
 }

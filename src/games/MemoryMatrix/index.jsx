@@ -14,6 +14,5 @@ export default function MemoryMatrixPage() {
   }, [gameId, teams]);
 
   if (!gameId || teams.length === 0) return null;
-
   return <MemoryMatrix />;
 }

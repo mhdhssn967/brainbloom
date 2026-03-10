@@ -43,14 +43,15 @@ export default function Home() {
 
   return (
     <div style={{
-      width: "100vw", minHeight: "100vh",
-      background: "#060B18",
-      overflowX: "hidden",
-      overflowY: "auto",
-      display: "flex", flexDirection: "column",
-      alignItems: "center",
-      position: "relative",
-    }}>
+  width: "100vw",
+  minHeight: "100vh",      // ← add this
+  background: "#060B18",
+  overflowX: "hidden",
+  overflowY: "auto",
+  display: "flex", flexDirection: "column",
+  alignItems: "center",
+  position: "relative",
+}}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Baloo+2:wght@700;800;900&family=Nunito:wght@600;700;800;900&display=swap');
 
@@ -207,8 +208,8 @@ export default function Home() {
       {/* ── GAME GRID ─────────────────────────────────────────────────── */}
       <div style={{
         display:               "grid",
-        gridTemplateColumns:   "repeat(4, 1fr)",
-        gap:                   20,
+        gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+        gap:                   40,
         padding:               "0 40px 60px",
         width:                 "100%",
         maxWidth:              1280,
