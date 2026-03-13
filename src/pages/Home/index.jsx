@@ -170,7 +170,7 @@ export default function Home() {
         </div>
 
         {/* Stats row */}
-        {/* <div style={{
+        <div style={{
           display:        "flex",
           gap:            32,
           justifyContent: "center",
@@ -202,13 +202,13 @@ export default function Home() {
               </div>
             </div>
           ))}
-        </div> */}
+        </div>
       </div>
 
       {/* ── GAME GRID ─────────────────────────────────────────────────── */}
       <div style={{
         display:               "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+        gridTemplateColumns: "repeat(4, minmax(200px, 1fr))",
         gap:                   40,
         padding:               "0 40px 60px",
         width:                 "100%",
