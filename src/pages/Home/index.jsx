@@ -5,6 +5,8 @@ import GameModal               from "./Gamemodal";
 import { useNavigate }         from "react-router-dom";
 import { useSessionStore }     from "@/store/sessionStore";
 import { useTeamStore }        from "@/store/teamStore";
+import SyncBadge from "@/components/ui/SyncBadge";
+import { Library } from "lucide-react";
 
 // Floating particle
 function Particle({ style }) {
@@ -52,6 +54,35 @@ export default function Home() {
   alignItems: "center",
   position: "relative",
 }}>
+<div style={{
+  position: "fixed",
+  top: 20,
+  right: 20,
+  zIndex: 100,
+  display: "flex",
+  alignItems: "center",
+  gap: 8,
+}}>
+  <button
+    onClick={() => navigate("/library")}
+    style={{
+      display: "flex", alignItems: "center", gap: 6,
+      background: "rgba(255,255,255,0.06)",
+      border: "1px solid rgba(255,255,255,0.1)",
+      borderRadius: 999,
+      padding: "6px 14px",
+      color: "rgba(255,255,255,0.5)",
+      fontSize: 25, fontWeight: 800,
+      cursor: "pointer",
+      fontFamily: "'Nunito', sans-serif",
+      backdropFilter: "blur(8px)",
+    }}
+  >
+    <Library size={25} />
+    Library
+  </button>
+  <SyncBadge />
+</div>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Baloo+2:wght@700;800;900&family=Nunito:wght@600;700;800;900&display=swap');
 

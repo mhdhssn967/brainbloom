@@ -17,6 +17,7 @@ const GrammarBridge = lazy(() => import('@/games/GrammarBridge'))
 const FoodChain = lazy(() => import('@/games/FoodChain'))
 const ChameleonCatch = lazy(() => import('@/games/ChameleonCatch'))
 const TrackRush = lazy(() => import('@/games/TrackRush'))
+const PackLibrary = lazy(() => import('@/pages/PackLibrary'))
 
 const router = createBrowserRouter([
   { path: '/', element: <Home /> },
@@ -33,7 +34,9 @@ const router = createBrowserRouter([
   { path: '/play/grammar-bridge', element: <GrammarBridge /> },
   { path: "/play/food-chain", element: <FoodChain /> },
   { path: "/play/chameleon-catch", element: <ChameleonCatch /> },
-  { path: "/play/track-rush", element: <TrackRush /> }
+  { path: "/play/track-rush", element: <TrackRush /> },
+
+  { path: '/library', element: <PackLibrary /> }
 ])
 
 export default function Router() {
