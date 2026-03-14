@@ -13,12 +13,13 @@ export default function TrackRush() {
   return <TrackRushGame {...config} />;
 }
 
-const TrackRushGame = memo(function TrackRushGame({ levelKey, totalSeconds }) {
+const TrackRushGame = memo(function TrackRushGame({ levelKey, questions: questionsProp, totalSeconds, packTitle }) {
   const {
     players, timeLeft, gameOver, winner,
-    started, teams, qIndex, questions,
+    started, teams, qIndex,
+    questions,   // ← just "questions" — this comes from the hook, not the prop
     spawnKey, onPortalHit, changeLane, startGame,
-  } = useTrackRush({ levelKey, totalSeconds });
+  } = useTrackRush({ levelKey, questions: questionsProp, totalSeconds });
 
   const question = questions[qIndex];
   const mins     = Math.floor(timeLeft / 60);

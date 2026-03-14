@@ -10,11 +10,14 @@ function initPlayer() {
   return { score: 0, lane: 1, phase: "waiting" };
 }
 
-export function useTrackRush({ levelKey, totalSeconds }) {
+export function useTrackRush({ levelKey, questions: questionsProp, totalSeconds }) {
   const { endSession } = useSessionStore();
   const { teams }      = useTeamStore();
 
-  const questions  = useMemo(() => buildQuestionList(levelKey), [levelKey]);
+  const questions = useMemo(() => {
+  if (questionsProp) return questionsProp;          // custom pack
+  return buildQuestionList(levelKey ?? "class3_4"); // built-in fallback
+}, [questionsProp, levelKey]);
   const [qIndex,   setQIndex]  = useState(0);
   const qIndexRef              = useRef(0);
 
