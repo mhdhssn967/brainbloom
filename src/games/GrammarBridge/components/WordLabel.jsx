@@ -13,8 +13,8 @@ export function WordLabel({ x, word, color = "#ffffff", isBlank = false }) {
 font="/fonts/LuckiestGuy-Regular.ttf"   // kid friendly font
         fontSize={0.3}
         color="rgb(240, 224, 4)"                         // bright yellow
-        outlineWidth={0.05}
-        outlineColor="#2962FF"                  // bright blue stroke
+        outlineWidth={0.1}
+        outlineColor="black"                  // bright blue stroke
         anchorX="center"
         anchorY="middle"
         maxWidth={1.2}

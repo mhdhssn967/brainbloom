@@ -229,6 +229,9 @@ export default function Home() {
             />
           </div>
         ))}
+        <div class="game-card more-card">
+  <img src="/assets/images/games/more.png" alt="More Games Coming Soon" />
+</div>
       </div>
 
       {/* ── MODAL ─────────────────────────────────────────────────────── */}

@@ -186,4 +186,26 @@ export const GAMES = [
     { step: "7", text: "Most points when timer ends wins!" },
   ],
 },
+{
+  id:          "track-rush",
+  name:        "Track Rush",
+  tagline:     "Run through the right answer before time runs out.",
+  subject:     "General Knowledge",
+  description:
+  "Track Rush is a fast-paced quiz runner where players race down the track to reach the correct answer. Each question appears at the top while three answer blocks appear across the lanes. Players must quickly switch lanes and run through the correct option before time runs out. Speed, accuracy, and quick thinking decide the winner!",
+  icon:        "/assets/images/games/trackrush.png",
+  mockupEmoji: "🏃",
+  accentColor: "#F59E0B",
+  modes:       ["Team Battle"],
+  route:       "/play/track-rush",
+  howToPlay: [
+    { step: "1", text: "Choose your class level" },
+    { step: "2", text: "A question appears at the top for both teams" },
+    { step: "3", text: "Three answer blocks appear on the track lanes" },
+    { step: "4", text: "Swipe left or right to change your character's lane" },
+    { step: "5", text: "Run through the correct answer block to score +10" },
+    { step: "6", text: "Wrong block = stumble and -5 points" },
+    { step: "7", text: "Most points when the timer ends wins!" },
+  ],
+},
 ];

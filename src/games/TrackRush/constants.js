@@ -1,0 +1,12 @@
+export const POINTS_CORRECT   = 10
+export const POINTS_WRONG     = -5
+export const LANE_COUNT       = 3
+export const BLOCK_SPEED_BASE = 4.5    // units/sec at round 0
+export const BLOCK_SPEED_MAX  = 9      // units/sec cap
+export const BLOCK_SPAWN_Z    = -28    // Z position blocks spawn at (far)
+export const BLOCK_HIT_Z      = 1.2    // Z position that triggers hit detection
+export const LANE_X           = [-3.2, 0, 3.2]  // X positions of left/mid/right lane
+export const STUMBLE_MS       = 700    // duration of wrong-hit stumble animation
+export const CONFETTI_MS      = 900    // duration of confetti burst
+export const NEXT_Q_DELAY_MS  = 1200   // pause before next question loads
+export const CHAR_Z           = 5.0    // character Z position (fixed)

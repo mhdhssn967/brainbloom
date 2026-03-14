@@ -8,7 +8,7 @@ export function IslandPlatform({ position,  }) {
 
   return (
     <group position={position}>
-      <primitive object={clonedScene} scale={[0.8, 0.8, 0.8]} position={[0,-2.2,0]} />
+      <primitive object={clonedScene} scale={[0.8, 0.8, 0.8]} position={[0,-2.1,0]} />
     </group>
   );
 }

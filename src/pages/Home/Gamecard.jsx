@@ -150,7 +150,7 @@ export default function GameCard({ game, index, onClick }) {
           </div>
 
           {/* Mode badge — top right */}
-          <div style={{
+          {/* <div style={{
             position:      "absolute",
             top:           10, right: 10,
             background:    "rgba(0,0,0,0.55)",
@@ -165,7 +165,7 @@ export default function GameCard({ game, index, onClick }) {
             textTransform: "uppercase",
           }}>
             {game.modes?.[0] ?? "Multiplayer"}
-          </div>
+          </div> */}
 
           {/* Emoji — bottom left of image area */}
           <div style={{

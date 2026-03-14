@@ -6,6 +6,7 @@ import { BridgeBlock }                         from "./BridgeBlock";
 import { WordLabel }                           from "./WordLabel";
 import { IslandPlatform }                      from "./IslandPlatform";
 import { FlagPole }                            from "./FlagPole";
+import { MarioBackground } from "./MarioBackground";
 
 const BridgeScene = memo(function BridgeScene({
   playerId,
@@ -38,6 +39,7 @@ const BridgeScene = memo(function BridgeScene({
       style={{ background: "transparent" }}
       frameloop="always"
     >
+      <MarioBackground/>
         {/* <OrbitControls/> */}
       <OrthographicCamera
         makeDefault
