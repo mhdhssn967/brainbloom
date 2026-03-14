@@ -58,14 +58,18 @@ export function useTrackRush({ levelKey, totalSeconds }) {
     try { SoundManager.play(SOUND_KEYS.WIN); } catch (e) {}
   }, [endSession]);
 
+
+  const generationRef = useRef(0);
   // ── spawnBlocks — just sets a key; R3F canvas spawns portals on key change
-  const spawnBlocks = useCallback((qIdx) => {
-    answeredRef.current = { 0: false, 1: false };
-    hitCoolRef.current  = { 0: false, 1: false };
-    qIndexRef.current   = qIdx;
-    setQIndex(qIdx);
-    setSpawnKey({ qIdx, ts: Date.now() });
-  }, []);
+ const spawnBlocks = useCallback((qIdx) => {
+  generationRef.current += 1;          // bump generation
+  const myGen = generationRef.current;
+  answeredRef.current = { 0: false, 1: false };
+  hitCoolRef.current  = { 0: false, 1: false };
+  qIndexRef.current   = qIdx;
+  setQIndex(qIdx);
+  setSpawnKey({ qIdx, ts: Date.now(), gen: myGen }); // include gen in key
+}, []);
 
   const loadQuestion = useCallback((idx) => {
     setPlayers(prev => {

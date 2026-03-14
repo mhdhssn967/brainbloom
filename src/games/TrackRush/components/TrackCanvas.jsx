@@ -364,7 +364,11 @@ function Character({ modelPath, lane, phase, teamColor }) {
 
   return (
     <group ref={groupRef} position={[LANE_X[lane], 0, CHAR_Z]}>
-      <primitive object={clonedScene} scale={0.65} rotation={[0, Math.PI, 0]} />
+  <primitive
+  object={clonedScene}
+  scale={0.65}
+  rotation={phase === "waiting" ? [0, Math.PI * 2, 0] : [0, Math.PI, 0]}
+/>
       <pointLight position={[0,0.8,0]} color={teamColor}
         intensity={phase === "celebrating" ? 5 : 1.5} distance={3.5} />
       {phase === "stumble" && <pointLight position={[0,1,0]} color="#EF4444" intensity={6} distance={3} />}
@@ -414,8 +418,8 @@ function Scene({ playerId, player, spawnKey, question, teamColor, onPortalHit, s
 // ─── Export ──────────────────────────────────────────────────────────────────
 export default function TrackCanvas({ playerId, player, spawnKey, question, teamColor, onPortalHit, started }) {
   return (
-    <Canvas shadows gl={{ antialias: true, alpha: false }}
-      style={{ width:"100%", height:"100%", background:"#87CEEB" }}>
+    <Canvas shadows gl={{ antialias: true, alpha: false }} 
+      style={{ width:"100%", height:"100%", background:"#87CEEB",pointerEvents:'none' }}>
       <Scene playerId={playerId} player={player} spawnKey={spawnKey}
         question={question} teamColor={teamColor}
         onPortalHit={onPortalHit} started={started} />
