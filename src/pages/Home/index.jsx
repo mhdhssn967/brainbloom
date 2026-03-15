@@ -183,7 +183,7 @@ export default function Home() {
           <img
             src="/assets/images/logo.png"
             alt="BrainBloom"
-            style={{ width: 250, filter: "drop-shadow(0 0 32px rgba(129,140,248,0.5))" }}
+            style={{ width: 250 }}
           />
         </div>
 
