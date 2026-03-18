@@ -112,7 +112,7 @@ export default function SchoolLogin() {
       }}>
 
         {/* Logo */}
-        <div style={{ textAlign: "center", marginBottom: 32 }} className="flex justify-center">
+        <div style={{ textAlign: "center", marginBottom: 32 }} className="flex justify-center flex-col items-center">
           <img
             src="/assets/images/logo.png"
             alt="BrainBloom"
