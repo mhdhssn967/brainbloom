@@ -347,6 +347,10 @@ export default function SchoolLogin() {
         }}>
           BRAINBLOOM · GAME PLATFORM
         </p>
+        <p className="text-indigo-50/20">Test Credential
+        <ul> <li>test@mail.com</li></ul>
+        <ul><li>test@123</li></ul>
+        </p>
       </div>
     </div>
   );
