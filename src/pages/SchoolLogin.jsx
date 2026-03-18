@@ -112,7 +112,7 @@ export default function SchoolLogin() {
       }}>
 
         {/* Logo */}
-        <div style={{ textAlign: "center", marginBottom: 32 }}>
+        <div style={{ textAlign: "center", marginBottom: 32 }} className="flex justify-center">
           <img
             src="/assets/images/logo.png"
             alt="BrainBloom"
@@ -347,7 +347,7 @@ export default function SchoolLogin() {
         }}>
           BRAINBLOOM · GAME PLATFORM
         </p>
-        <p className="text-indigo-50/20">Test Credential
+        <p className="text-indigo-50/30">Test Credentials
         <ul> <li>test@mail.com</li></ul>
         <ul><li>test@123</li></ul>
         </p>
